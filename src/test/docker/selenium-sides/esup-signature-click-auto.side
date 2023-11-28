@@ -1,0 +1,38 @@
+{
+  "id": "25629a7c-6b8a-4e9c-9cc5-c5658380e065",
+  "version": "2.0",
+  "name": "esup-signature",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "7fa4ab4a-6660-4ad3-ba2e-fa21a6e6ecdd",
+    "name": "esup-signature-click-auto",
+    "commands": [{
+      "id": "12c9825a-c421-4f29-b678-8fa16f743939",
+      "comment": "",
+      "command": "open",
+      "target": "/user/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "875ff629-f738-4c2f-a327-c14519de2ed1",
+      "comment": "",
+      "command": "click",
+      "target": "id=newfastSign",
+      "targets": [
+        ["id=newfastSign", "id"],
+        ["linkText=Auto signature", "linkText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "706a41b5-7cdc-4fe4-ae2c-2303afa811d7",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["7fa4ab4a-6660-4ad3-ba2e-fa21a6e6ecdd"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

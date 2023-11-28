@@ -17,5 +17,31 @@ services:
     links:
       - postgres
     image: esup-signature:latest
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f -LI http://esup-signature:8080" ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
     ports:
       - 8080:8080
+
+  selenium-chrome-driver:
+    image: robcherry/docker-chromedriver
+    privileged: true
+    restart: always
+    environment:
+      - CHROMEDRIVER_WHITELISTED_IPS=''
+    ports:
+      - '4444:4444'
+    
+  selenium-side-runner:
+    build:
+      context: src/test/docker/selenium-side-runner
+    depends_on:
+      - esup-signature
+      - selenium-chrome-driver
+    volumes:
+      - './src/test/docker/selenium-sides:/test-sides'
+      - './src/test/docker/selenium-sides-files:/files'      
+      - './selenium-sides-result:/root/test-result'
+
